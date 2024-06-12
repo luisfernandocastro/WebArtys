@@ -1,0 +1,48 @@
+
+{% extends 'root.html' %}
+{% load static %}
+
+
+
+{% block title %}
+    Artys | Subir producto
+{% endblock title %}
+    
+
+{% block contenido %}
+    
+
+<div class="container-fluid">
+    <div class="row vh-100 justify-content-center align-items-center">
+        <div class="col-auto p-5">
+            <div class="card mb-3 " style="max-width: 1000px;">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="https://github.com/luisfernandocastro/ImageServer/blob/master/embroidery-1842177_1280.jpg?raw=true" class="image-card h-100 w-100 img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <form action="" method="post" enctype="multipart/form-data">
+                    
+                                {{ error }}
+                                
+                                {% csrf_token %}
+                            
+                                {{form}}
+                            
+                                <button class="btn btn-primary d-block mx-auto">
+                                    Guardar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock contenido %}
+    
+

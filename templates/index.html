@@ -1,0 +1,122 @@
+{% extends 'root.html' %}
+{% load static %}
+
+
+
+{% block title %} 
+
+    {% if user.is_authenticated %}
+
+        Artys | {{ user.username | capfirst }} 
+
+    {% else %}
+
+        Artys  
+
+    {% endif %}
+
+{% endblock title %}
+
+
+
+{% block contenido %}
+
+<!-- Sección Jumbotron -->
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="btn-group mt-3" role="group" aria-label="Basic checkbox toggle button group">
+            
+            {% for categorias in categorias %}
+                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                <label class="btn " for="btncheck1">{{ categorias.nombre }}</label>
+                
+            {% endfor %}
+                
+        </div>
+
+        <!-- carousel -->
+        <div id="carouselExampleFade" class="carousel slide carousel-fade " data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://github.com/luisfernandocastro/ImageServer/blob/master/26745_26745_denominacion-origen-ompi-artesanias-colombia-2017-g_(1).jpg?raw=true" class="img-fluid img-thumbnai" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://github.com/luisfernandocastro/ImageServer/blob/master/professional-artisan-job-workshop.jpg?raw=true" class="img-fluid img-thumbnai" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://github.com/luisfernandocastro/ImageServer/blob/master/hands-weaving-enchanting-tapestry.jpg?raw=true" class="img-fluid img-thumbnai" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+        <!-- Fin seeccion carousel -->
+    </div> <!-- Fin row -->
+</div> <!-- Fin container-->
+ 
+<div class="container">
+    <div class="row">
+        
+        {% for products in products %}
+        <div class="card mt-3" style="width: 15rem;margin-left: 10px;">
+            <img src="{{ products.foto.url }}" class="card-img-top mt-3" alt="">
+            <div class="card-body">
+              <h5 class="card-title">{{ products.nombre }}</h5>
+              <p class="card-text">{{ products.descripcion }}</p>
+
+              <div class="">
+                <span class="text-primary position-absolute bottom-0 start-1" >{{ products.precio }}</span>
+                <a href="#" class="btn btn-primary position-absolute bottom-0 end-0"><i class="fas fa-shopping-cart"></i></a>  
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+</div>
+    
+    
+
+
+<!-- Sección de Artículos -->
+<!-- <div class="container-fluid" style="padding: 15px 10px;">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <h2>Titulo del articulo 1</h2>
+            <figure></figure>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus,
+                laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam
+                itaque qui magnam!</p>
+            <a href="#" class="btn btn-success">Leer mas</a>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <h2>Titulo del articulo 2</h2>
+            <figure></figure>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus,
+                laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam
+                itaque qui magnam!</p>
+            <a href="#" class="btn btn-success">Leer mas</a>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <h2>Titulo del articulo 3</h2>
+            <figure></figure>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat distinctio illo rerum atque ducimus,
+                laboriosam debitis eum deserunt ab libero quis voluptas, illum, perferendis numquam aut aliquam
+                itaque qui magnam!</p>
+            <a href="#" class="btn btn-success">Leer mas</a>
+        </div>
+
+    </div> -->
+<!-- </div> -->
+<!-- Fin Sección de Artículos -->
+{% endblock contenido %}
